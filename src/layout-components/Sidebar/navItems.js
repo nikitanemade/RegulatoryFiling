@@ -48,7 +48,7 @@ export default [
     "icon": "DashboardTwoToneIcon",
     "content": [
       {
-        "label": "AIFMD",
+        "label": "FORM PF",
         "description": "This is a dashboard page example built using this template.",
         "to": "/DashboardDefault"
       }
