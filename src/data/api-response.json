@@ -3,10 +3,10 @@
         {
             "RT_ChildFundCode": "VAL",
             "BusinessDate": "2018-12-31",
-            "Lng_LE_FIN_INST": null,
-            "Lng_LE_OTH_LE": null,
+            "Lng_LE_FIN_INST": "40469706.451",
+            "Lng_LE_OTH_LE": "520153545.49",
             "Shrt_LE_FIN_INST": null,
-            "Shrt_LE_OTH_LE": null,
+            "Shrt_LE_OTH_LE": "216576850.981",
             "Lng_ULE_FIN_INST": null,
             "Lng_ULE_OTH_LE": null,
             "Shrt_ULE_FIN_INST": null,
