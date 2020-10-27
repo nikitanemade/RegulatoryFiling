@@ -15,24 +15,26 @@ export class DashboardDefault extends Component {
   constructor() {
     super();
     this.state = {
-      data: []
+      data: [],
+      data1: []
     }
   }
 
   componentDidMount() {
-    // debugger;
-    // this.setState({
-    //   data: ApiData.AssetClass1[0]
-    // });
+    debugger;
+    this.setState({
+      data: ApiData.AssetClass1[0],
+      data1: ApiData.AssetClass2[0]
+    });
     //var data2 = require('../data/api-response.json');
 
-    fetch('http://10.247.6.91:8001/rf/operaformpf/?businessdate=2020-06-30&fundcode=MainFund&clientname=TestClient')
-    .then(res => res.json())
-    .then(resData =>{
-      this.setState({
-        data : resData.AssetClass1[0]
-      }); 
-    })
+    // fetch('http://10.247.4.67:8001/rf/operaformpf/?businessdate=2020-06-30&fundcode=MainFund&clientname=TestClient')
+    // .then(res => res.json())
+    // .then(resData =>{
+    //   this.setState({
+    //     data : resData.AssetClass1[0]
+    //   }); 
+    // })
 
     console.log(this.state.data);
   }
@@ -213,10 +215,6 @@ export class DashboardDefault extends Component {
                   <td>{this.state.data.Lng_CnvrtBnd_Non_FI_Non_Invest_grde_duration == null ? 'NA' : this.state.data.Lng_CnvrtBnd_Non_FI_Non_Invest_grde_duration}</td>
                   <td>{this.state.data.Shrt_CnvrtBnd_Non_FI_Non_Invest_grde_duration == null ? 'NA' : this.state.data.Shrt_CnvrtBnd_Non_FI_Non_Invest_grde_duration}</td>
                 </tr>
-
-              {/* ------------------------------------------------- */}
-
-               
                 <tr>
                   <th colSpan="5" align="left">Sovereign bonds and municipal bonds</th>
                 </tr>
@@ -279,7 +277,245 @@ export class DashboardDefault extends Component {
                   <td colSpan="3" style={{ textIndent: '50px' }}> Duration</td>
                   <td>{this.state.data.lng_SB_US_LB_dur == null ? 'NA' : this.state.data.lng_SB_US_LB_dur}</td>
                   <td>{this.state.data.shrt_SB_US_LB_dur == null ? 'NA' : this.state.data.shrt_SB_US_LB_dur}</td>
+                </tr> 
+
+{/* ------------------------------------------------- */}
+                <tr>
+                  <th colSpan="5" align="left">Loans</th>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Leveraged loans</td>
+                  <td>{this.state.data1.lng_leveragedLoans == null ? 'NA' : this.state.data1.lng_leveragedLoans}</td>
+                  <td>{this.state.data1.shrt_leveragedLoans == null ? 'NA' : this.state.data1.shrt_leveragedLoans}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Duration</td>
+                  <td>{this.state.data1.lng_leveragedLoans_dur == null ? 'NA' : this.state.data1.lng_leveragedLoans_dur}</td>
+                  <td>{this.state.data1.shrt_leveragedLoans_dur == null ? 'NA' : this.state.data1.shrt_leveragedLoans_dur}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Other Loans (not including repos)</td>
+                  <td>{this.state.data1.lng_Loans_OthLoans == null ? 'NA' : this.state.data1.lng_Loans_OthLoans}</td>
+                  <td>{this.state.data1.shrt_Loans_OthLoans == null ? 'NA' : this.state.data1.shrt_Loans_OthLoans}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Duration</td>
+                  <td>{this.state.data1.lng_Loans_OthLoans_dur == null ? 'NA' : this.state.data1.lng_Loans_OthLoans_dur}</td>
+                  <td>{this.state.data1.shrt_Loans_OthLoans_dur == null ? 'NA' : this.state.data1.shrt_Loans_OthLoans_dur}</td>
+                </tr>
+                <tr>
+                  <th colSpan="5" align="left">Repos</th>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Duration</td>
+                  <td>{this.state.data1.lng_Repos_dur == null ? 'NA' : this.state.data1.lng_Repos_dur}</td>
+                  <td>{this.state.data1.shrt_Repos_dur == null ? 'NA' : this.state.data1.shrt_Repos_dur}</td>
+                </tr>
+                <tr>
+                  <th colSpan="5" align="left">ABS/Structured Products</th>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>MBS</td>
+                  <td>{this.state.data1.lng_ABS_MBS == null ? 'NA' : this.state.data1.lng_ABS_MBS}</td>
+                  <td>{this.state.data1.shrt_ABS_MBS == null ? 'NA' : this.state.data1.shrt_ABS_MBS}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Duration</td>
+                  <td>{this.state.data1.lng_ABS_MBS_dur == null ? 'NA' : this.state.data1.lng_ABS_MBS_dur}</td>
+                  <td>{this.state.data1.shrt_ABS_MBS_dur == null ? 'NA' : this.state.data1.shrt_ABS_MBS_dur}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>ABCP</td>
+                  <td>{this.state.data1.lng_ABS_ABCP == null ? 'NA' : this.state.data1.lng_ABS_ABCP}</td>
+                  <td>{this.state.data1.shrt_ABS_ABCP == null ? 'NA' : this.state.data1.shrt_ABS_ABCP}</td>
+                </tr> 
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Duration</td>
+                  <td>{this.state.data1.lng_ABS_ABCP_dur == null ? 'NA' : this.state.data1.lng_ABS_ABCP_dur}</td>
+                  <td>{this.state.data1.shrt_ABS_ABCP_dur == null ? 'NA' : this.state.data1.shrt_ABS_ABCP_dur}</td>
                 </tr>  
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>CDO/CLO</td>
+                  <td>{this.state.data1.lng_ABS_CDO == null ? 'NA' : this.state.data1.lng_ABS_CDO}</td>
+                  <td>{this.state.data1.shrt_ABS_CDO == null ? 'NA' : this.state.data1.shrt_ABS_CDO}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Duration</td>
+                  <td>{this.state.data1.lng_ABS_CDO_dur == null ? 'NA' : this.state.data1.lng_ABS_CDO_dur}</td>
+                  <td>{this.state.data1.shrt_ABS_CDO_dur == null ? 'NA' : this.state.data1.shrt_ABS_CDO_dur}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Other ABS</td>
+                  <td>{this.state.data1.lng_ABS_OthABS == null ? 'NA' : this.state.data1.lng_ABS_OthABS}</td>
+                  <td>{this.state.data1.shrt_ABS_OthABS == null ? 'NA' : this.state.data1.shrt_ABS_OthABS}</td>
+                </tr> 
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Duration</td>
+                  <td>{this.state.data1.lng_ABS_OthABS_dur == null ? 'NA' : this.state.data1.lng_ABS_OthABS_dur}</td>
+                  <td>{this.state.data1.shrt_ABS_OthABS_dur == null ? 'NA' : this.state.data1.shrt_ABS_OthABS_dur}</td>
+                </tr>   
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Other Structured products</td>
+                  <td>{this.state.data1.lng_ABS_OthStruct == null ? 'NA' : this.state.data1.lng_ABS_OthStruct}</td>
+                  <td>{this.state.data1.shrt_ABS_OthStruct == null ? 'NA' : this.state.data1.shrt_ABS_OthStruct}</td>
+                </tr> 
+                <tr>
+                  <th colSpan="5" align="left">Credit derivatives</th>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Single name CDS</td>
+                  <td>{this.state.data1.lng_CD_CDS == null ? 'NA' : this.state.data1.lng_CD_CDS}</td>
+                  <td>{this.state.data1.Shrt_CD_CDS == null ? 'NA' : this.state.data1.Shrt_CD_CDS}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Index CDS</td>
+                  <td>{this.state.data1.lng_CD_IndexCDS == null ? 'NA' : this.state.data1.lng_CD_IndexCDS}</td>
+                  <td>{this.state.data1.shrt_CD_IndexCDS == null ? 'NA' : this.state.data1.shrt_CD_IndexCDS}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Exotic CDS</td>
+                  <td>{this.state.data1.lng_CD_ExoticCDS == null ? 'NA' : this.state.data1.lng_CD_ExoticCDS}</td>
+                  <td>{this.state.data1.shrt_CD_ExoticCDS == null ? 'NA' : this.state.data1.shrt_CD_ExoticCDS}</td>
+                </tr>
+                <tr>
+                  <th colSpan="3">Foreign exchange derivatives (Investment)</th>
+                  <td>{this.state.data1.lng_FED_INVST == null ? 'NA' : this.state.data1.lng_FED_INVST}</td>
+                  <td>{this.state.data1.shrt_FED_INVST == null ? 'NA' : this.state.data1.shrt_FED_INVST}</td>
+                </tr>
+                <tr>
+                  <th colSpan="3">Foreign exchange derivatives (hedging)</th>
+                  <td>{this.state.data1.lng_FED_Hedging == null ? 'NA' : this.state.data1.lng_FED_Hedging}</td>
+                  <td>{this.state.data1.shrt_FED_Hedging == null ? 'NA' : this.state.data1.shrt_FED_Hedging}</td>
+                </tr>
+                <tr>
+                  <th colSpan="3">Non-US currency holdings</th>
+                  <td>{this.state.data1.lng_non_USCurrHld == null ? 'NA' : this.state.data1.lng_non_USCurrHld}</td>
+                  <td>{this.state.data1.shrt_non_USCurrHld == null ? 'NA' : this.state.data1.shrt_non_USCurrHld}</td>
+                </tr>
+                <tr>
+                  <th colSpan="3">Interest rate derivatives</th>
+                  <td>{this.state.data1.lng_IRD == null ? 'NA' : this.state.data1.lng_IRD}</td>
+                  <td>{this.state.data1.shrt_IRD == null ? 'NA' : this.state.data1.shrt_IRD}</td>
+                </tr>  
+                <tr>
+                  <th colSpan="5" align="left">Commodities (derivatives)</th>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Crude oil</td>
+                  <td>{this.state.data1.lng_Comm_Crudeoil == null ? 'NA' : this.state.data1.lng_Comm_Crudeoil}</td>
+                  <td>{this.state.data1.shrt_Comm_Crudeoil == null ? 'NA' : this.state.data1.shrt_Comm_Crudeoil}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Natural gas</td>
+                  <td>{this.state.data1.lng_Comm_NatGas == null ? 'NA' : this.state.data1.lng_Comm_NatGas}</td>
+                  <td>{this.state.data1.shrt_Comm_NatGas == null ? 'NA' : this.state.data1.shrt_Comm_NatGas}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Gold</td>
+                  <td>{this.state.data1.lng_Comm_Gold == null ? 'NA' : this.state.data1.lng_Comm_Gold}</td>
+                  <td>{this.state.data1.shrt_Comm_Gold == null ? 'NA' : this.state.data1.shrt_Comm_Gold}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Power</td>
+                  <td>{this.state.data1.lng_Comm_Power == null ? 'NA' : this.state.data1.lng_Comm_Power}</td>
+                  <td>{this.state.data1.shrt_Comm_Power == null ? 'NA' : this.state.data1.shrt_Comm_Power}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Other Commodities</td>
+                  <td>{this.state.data1.lng_Comm_OthComm == null ? 'NA' : this.state.data1.lng_Comm_OthComm}</td>
+                  <td>{this.state.data1.shrt_Comm_OthComm == null ? 'NA' : this.state.data1.shrt_Comm_OthComm}</td>
+                </tr>  
+                <tr>
+                  <th colSpan="5" align="left">Commodities (physical)</th>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Crude oil</td>
+                  <td>{this.state.data1.lng_Comm_phy_Crudeoil == null ? 'NA' : this.state.data1.lng_Comm_phy_Crudeoil}</td>
+                  <td>{this.state.data1.shrt_Comm_phy_Crudeoil == null ? 'NA' : this.state.data1.shrt_Comm_phy_Crudeoil}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Natural gas</td>
+                  <td>{this.state.data1.lng_Comm_phy_NatGas == null ? 'NA' : this.state.data1.lng_Comm_phy_NatGas}</td>
+                  <td>{this.state.data1.shrt_Comm_phy_NatGas == null ? 'NA' : this.state.data1.shrt_Comm_phy_NatGas}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Gold</td>
+                  <td>{this.state.data1.lng_Comm_phy_Gold == null ? 'NA' : this.state.data1.lng_Comm_phy_Gold}</td>
+                  <td>{this.state.data1.shrt_Comm_phy_Gold == null ? 'NA' : this.state.data1.shrt_Comm_phy_Gold}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Power</td>
+                  <td>{this.state.data1.lng_Comm_phy_Power == null ? 'NA' : this.state.data1.lng_Comm_phy_Power}</td>
+                  <td>{this.state.data1.shrt_Comm_phy_Power == null ? 'NA' : this.state.data1.shrt_Comm_phy_Power}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Other Commodities</td>
+                  <td>{this.state.data1.lng_Comm_phy_OthComm == null ? 'NA' : this.state.data1.lng_Comm_phy_OthComm}</td>
+                  <td>{this.state.data1.shrt_Comm_phy_OthComm == null ? 'NA' : this.state.data1.shrt_Comm_phy_OthComm}</td>
+                </tr>
+                <tr>
+                  <th colSpan="3">Other derivatives</th>
+                  <td>{this.state.data1.lng_OthDeri == null ? 'NA' : this.state.data1.lng_OthDeri}</td>
+                  <td>{this.state.data1.shrt_OthDeri == null ? 'NA' : this.state.data1.shrt_OthDeri}</td>
+                </tr> 
+                <tr>
+                  <th colSpan="3">Physical real estate</th>
+                  <td>{this.state.data1.lng_PhyRealEstate == null ? 'NA' : this.state.data1.lng_PhyRealEstate}</td>
+                  <td>{this.state.data1.shrt_PhyRealEstate == null ? 'NA' : this.state.data1.shrt_PhyRealEstate}</td>
+                </tr> 
+                <tr>
+                  <th colSpan="3">Investments in internal private funds</th>
+                  <td>{this.state.data1.lng_invstInt_funds == null ? 'NA' : this.state.data1.lng_invstInt_funds}</td>
+                  <td>{this.state.data1.shrt_invstInt_funds == null ? 'NA' : this.state.data1.shrt_invstInt_funds}</td>
+                </tr> 
+                <tr>
+                  <th colSpan="3">Investments in external private funds</th>
+                  <td>{this.state.data1.lng_invstext_funds == null ? 'NA' : this.state.data1.lng_invstext_funds}</td>
+                  <td>{this.state.data1.shrt_invstext_funds == null ? 'NA' : this.state.data1.shrt_invstext_funds}</td>
+                </tr> 
+                <tr>
+                  <th colSpan="3">Investments in registered investment companies</th>
+                  <td>{this.state.data1.lng_invsregi_comp == null ? 'NA' : this.state.data1.lng_invsregi_comp}</td>
+                  <td>{this.state.data1.shrt_invsregi_comp == null ? 'NA' : this.state.data1.shrt_invsregi_comp}</td>
+                </tr>  
+                <tr>
+                  <th colSpan="5" align="left">Cash and cash equivalents</th>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Certificates of deposit</td>
+                  <td>{this.state.data1.lng_Cash_CD == null ? 'NA' : this.state.data1.lng_Cash_CD}</td>
+                  <td>{this.state.data1.shrt_Cash_CD == null ? 'NA' : this.state.data1.shrt_Cash_CD}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Duration</td>
+                  <td>{this.state.data1.lng_Cash_CD_dur == null ? 'NA' : this.state.data1.lng_Cash_CD_dur}</td>
+                  <td>{this.state.data1.shrt_Cash_CD_dur == null ? 'NA' : this.state.data1.shrt_Cash_CD_dur}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Other deposits</td>
+                  <td>{this.state.data1.lng_Cash_OthDeposits == null ? 'NA' : this.state.data1.lng_Cash_OthDeposits}</td>
+                  <td>{this.state.data1.shrt_Cash_OthDeposits == null ? 'NA' : this.state.data1.shrt_Cash_OthDeposits}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Money market funds</td>
+                  <td>{this.state.data1.lng_Cash_MMF == null ? 'NA' : this.state.data1.lng_Cash_MMF}</td>
+                  <td>{this.state.data1.shrt_Cash_MMF == null ? 'NA' : this.state.data1.shrt_Cash_MMF}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Other cash and cash equivalents(excluding government securities)</td>
+                  <td>{this.state.data1.lng_Cash_Cashequi == null ? 'NA' : this.state.data1.lng_Cash_Cashequi}</td>
+                  <td>{this.state.data1.shrt_Cash_Cashequi == null ? 'NA' : this.state.data1.shrt_Cash_Cashequi}</td>
+                </tr>
+                <tr>
+                  <th colSpan="3">Investments in funds for cash management purposes (other than money market funds)</th>
+                  <td>{this.state.data1.lng_Invst_funds == null ? 'NA' : this.state.data1.lng_Invst_funds}</td>
+                  <td>{this.state.data1.shrt_Invst_funds == null ? 'NA' : this.state.data1.shrt_Invst_funds}</td>
+                </tr>
+                <tr>
+                  <th colSpan="3">Investments in other sub-asset classes</th>
+                  <td>{this.state.data1.lng_Invst_sub_asset == null ? 'NA' : this.state.data1.lng_Invst_sub_asset}</td>
+                  <td>{this.state.data1.shrt_Invst_sub_asset == null ? 'NA' : this.state.data1.shrt_Invst_sub_asset}</td>
+                </tr> 
               </tbody>
             </table>
             <div>
