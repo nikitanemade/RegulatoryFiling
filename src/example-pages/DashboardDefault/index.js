@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import ApiData from '../../data/api-response.json';
+import ApiDataQ26 from '../../data/api-response_q26.json';
+import ApiDataQ42 from '../../data/api-response_q42.json';
 
 import { PageTitle } from '../../layout-components';
 
@@ -16,15 +17,20 @@ export class DashboardDefault extends Component {
     super();
     this.state = {
       data: [],
-      data1: []
+      data1: [],
+      data2: [],
+      data3: []
     }
   }
 
   componentDidMount() {
     debugger;
     this.setState({
-      data: ApiData.AssetClass1[0],
-      data1: ApiData.AssetClass2[0]
+      data: ApiDataQ26.AssetClass1[0],
+      data1: ApiDataQ26.AssetClass2[0],
+
+      data2: ApiDataQ42.AssetClass1[0],
+      data3: ApiDataQ42.AssetClass2[0],
     });
     //var data2 = require('../data/api-response.json');
 
@@ -49,14 +55,14 @@ export class DashboardDefault extends Component {
           // titleDescription="This is a dashboard page example built using this template."
           />
           <div>
-            <table id="emp" className="table">
+            <table id="q26" className="table">
               <thead>
                 <tr>
                   <th colSpan="4" align="left">FUND : {this.state.data.RT_ChildFundCode}<br></br> Date : {this.state.data.BusinessDate}</th>
                   <th>FORM PF FILING</th>
                 </tr>
                 <tr>
-                  <th colSpan="5" align="left" align="center">Q26. Exp by Asset Class (Long/Short)</th>
+                  <th colSpan="5" align="center">Q26. Exp by Asset Class (Long/Short)</th>
                 </tr>
                 <tr>
                   <th colSpan="3" align="left">Asset Class</th>
@@ -237,7 +243,7 @@ export class DashboardDefault extends Component {
                   <td colSpan="3" style={{ textIndent: '50px' }}>Duration</td>
                   <td>{this.state.data.lng_SB_Agency_dur == null ? 'NA' : this.state.data.lng_SB_Agency_dur}</td>
                   <td>{this.state.data.shrt_SB_Agency_dur == null ? 'NA' : this.state.data.shrt_SB_Agency_dur}</td>
-                </tr> 
+                </tr>
                 <tr>
                   <td colSpan="3" style={{ textIndent: '50px' }}>GSE bonds</td>
                   <td>{this.state.data.lng_SB_GSE == null ? 'NA' : this.state.data.lng_SB_GSE}</td>
@@ -277,9 +283,9 @@ export class DashboardDefault extends Component {
                   <td colSpan="3" style={{ textIndent: '50px' }}> Duration</td>
                   <td>{this.state.data.lng_SB_US_LB_dur == null ? 'NA' : this.state.data.lng_SB_US_LB_dur}</td>
                   <td>{this.state.data.shrt_SB_US_LB_dur == null ? 'NA' : this.state.data.shrt_SB_US_LB_dur}</td>
-                </tr> 
+                </tr>
 
-{/* ------------------------------------------------- */}
+                {/* ------------------------------------------------- */}
                 <tr>
                   <th colSpan="5" align="left">Loans</th>
                 </tr>
@@ -328,12 +334,12 @@ export class DashboardDefault extends Component {
                   <td colSpan="3" style={{ textIndent: '50px' }}>ABCP</td>
                   <td>{this.state.data1.lng_ABS_ABCP == null ? 'NA' : this.state.data1.lng_ABS_ABCP}</td>
                   <td>{this.state.data1.shrt_ABS_ABCP == null ? 'NA' : this.state.data1.shrt_ABS_ABCP}</td>
-                </tr> 
+                </tr>
                 <tr>
                   <td colSpan="3" style={{ textIndent: '50px' }}>Duration</td>
                   <td>{this.state.data1.lng_ABS_ABCP_dur == null ? 'NA' : this.state.data1.lng_ABS_ABCP_dur}</td>
                   <td>{this.state.data1.shrt_ABS_ABCP_dur == null ? 'NA' : this.state.data1.shrt_ABS_ABCP_dur}</td>
-                </tr>  
+                </tr>
                 <tr>
                   <td colSpan="3" style={{ textIndent: '50px' }}>CDO/CLO</td>
                   <td>{this.state.data1.lng_ABS_CDO == null ? 'NA' : this.state.data1.lng_ABS_CDO}</td>
@@ -348,17 +354,17 @@ export class DashboardDefault extends Component {
                   <td colSpan="3" style={{ textIndent: '50px' }}>Other ABS</td>
                   <td>{this.state.data1.lng_ABS_OthABS == null ? 'NA' : this.state.data1.lng_ABS_OthABS}</td>
                   <td>{this.state.data1.shrt_ABS_OthABS == null ? 'NA' : this.state.data1.shrt_ABS_OthABS}</td>
-                </tr> 
+                </tr>
                 <tr>
                   <td colSpan="3" style={{ textIndent: '50px' }}>Duration</td>
                   <td>{this.state.data1.lng_ABS_OthABS_dur == null ? 'NA' : this.state.data1.lng_ABS_OthABS_dur}</td>
                   <td>{this.state.data1.shrt_ABS_OthABS_dur == null ? 'NA' : this.state.data1.shrt_ABS_OthABS_dur}</td>
-                </tr>   
+                </tr>
                 <tr>
                   <td colSpan="3" style={{ textIndent: '50px' }}>Other Structured products</td>
                   <td>{this.state.data1.lng_ABS_OthStruct == null ? 'NA' : this.state.data1.lng_ABS_OthStruct}</td>
                   <td>{this.state.data1.shrt_ABS_OthStruct == null ? 'NA' : this.state.data1.shrt_ABS_OthStruct}</td>
-                </tr> 
+                </tr>
                 <tr>
                   <th colSpan="5" align="left">Credit derivatives</th>
                 </tr>
@@ -396,7 +402,7 @@ export class DashboardDefault extends Component {
                   <th colSpan="3">Interest rate derivatives</th>
                   <td>{this.state.data1.lng_IRD == null ? 'NA' : this.state.data1.lng_IRD}</td>
                   <td>{this.state.data1.shrt_IRD == null ? 'NA' : this.state.data1.shrt_IRD}</td>
-                </tr>  
+                </tr>
                 <tr>
                   <th colSpan="5" align="left">Commodities (derivatives)</th>
                 </tr>
@@ -424,7 +430,7 @@ export class DashboardDefault extends Component {
                   <td colSpan="3" style={{ textIndent: '50px' }}>Other Commodities</td>
                   <td>{this.state.data1.lng_Comm_OthComm == null ? 'NA' : this.state.data1.lng_Comm_OthComm}</td>
                   <td>{this.state.data1.shrt_Comm_OthComm == null ? 'NA' : this.state.data1.shrt_Comm_OthComm}</td>
-                </tr>  
+                </tr>
                 <tr>
                   <th colSpan="5" align="left">Commodities (physical)</th>
                 </tr>
@@ -457,27 +463,27 @@ export class DashboardDefault extends Component {
                   <th colSpan="3">Other derivatives</th>
                   <td>{this.state.data1.lng_OthDeri == null ? 'NA' : this.state.data1.lng_OthDeri}</td>
                   <td>{this.state.data1.shrt_OthDeri == null ? 'NA' : this.state.data1.shrt_OthDeri}</td>
-                </tr> 
+                </tr>
                 <tr>
                   <th colSpan="3">Physical real estate</th>
                   <td>{this.state.data1.lng_PhyRealEstate == null ? 'NA' : this.state.data1.lng_PhyRealEstate}</td>
                   <td>{this.state.data1.shrt_PhyRealEstate == null ? 'NA' : this.state.data1.shrt_PhyRealEstate}</td>
-                </tr> 
+                </tr>
                 <tr>
                   <th colSpan="3">Investments in internal private funds</th>
                   <td>{this.state.data1.lng_invstInt_funds == null ? 'NA' : this.state.data1.lng_invstInt_funds}</td>
                   <td>{this.state.data1.shrt_invstInt_funds == null ? 'NA' : this.state.data1.shrt_invstInt_funds}</td>
-                </tr> 
+                </tr>
                 <tr>
                   <th colSpan="3">Investments in external private funds</th>
                   <td>{this.state.data1.lng_invstext_funds == null ? 'NA' : this.state.data1.lng_invstext_funds}</td>
                   <td>{this.state.data1.shrt_invstext_funds == null ? 'NA' : this.state.data1.shrt_invstext_funds}</td>
-                </tr> 
+                </tr>
                 <tr>
                   <th colSpan="3">Investments in registered investment companies</th>
                   <td>{this.state.data1.lng_invsregi_comp == null ? 'NA' : this.state.data1.lng_invsregi_comp}</td>
                   <td>{this.state.data1.shrt_invsregi_comp == null ? 'NA' : this.state.data1.shrt_invsregi_comp}</td>
-                </tr>  
+                </tr>
                 <tr>
                   <th colSpan="5" align="left">Cash and cash equivalents</th>
                 </tr>
@@ -515,16 +521,229 @@ export class DashboardDefault extends Component {
                   <th colSpan="3">Investments in other sub-asset classes</th>
                   <td>{this.state.data1.lng_Invst_sub_asset == null ? 'NA' : this.state.data1.lng_Invst_sub_asset}</td>
                   <td>{this.state.data1.shrt_Invst_sub_asset == null ? 'NA' : this.state.data1.shrt_Invst_sub_asset}</td>
-                </tr> 
+                </tr>
+              </tbody>
+            </table>
+            <table id="q42" className="table">
+              <thead>
+                <tr>
+                  <th colSpan="4" align="left">FUND : {this.state.data.RT_ChildFundCode}<br></br> Date : {this.state.data.BusinessDate}</th>
+                  <th>FORM PF FILING</th>
+                </tr>
+                <tr>
+                  <th colSpan="5" align="center">Q42 Scenarios (Stress Tests)</th>
+                </tr>
+                <tr>
+                  <th colSpan="3" align="left">Market factor-<br/>Changes in market factor</th>
+                  <th align="left">Effect on long components of<br/>portfolio (as % of NAV)</th>
+                  <th align="left">Effect on short components of<br/>portfolio (as % of NAV)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th colSpan="5" align="left">Equity prices:</th>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Equity prices increase 5%</td>
+                  <td>{this.state.data2.lng_equityPriceincrease5per == null ? 'NA' : this.state.data2.lng_equityPriceincrease5per + ' %'}</td>
+                  <td>{this.state.data2.shrt_equityPriceincrease5per == null ? 'NA' : this.state.data2.shrt_equityPriceincrease5per + ' %'}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Equity prices decrease 5%</td>
+                  <td>{this.state.data2.lng_equityPricedecrease5per == null ? 'NA' : this.state.data2.lng_equityPricedecrease5per + ' %'}</td>
+                  <td>{this.state.data2.shrt_equityPricedecrease5per == null ? 'NA' : this.state.data2.shrt_equityPricedecrease5per + ' %'}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Equity prices increase 20%</td>
+                  <td>{this.state.data2.lng_equityPriceincrease20per == null ? 'NA' : this.state.data2.lng_equityPriceincrease20per + ' %'}</td>
+                  <td>{this.state.data2.shrt_equityPriceincrease20per == null ? 'NA' : this.state.data2.shrt_equityPriceincrease20per + ' %'}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Equity prices decrease 20%</td>
+                  <td>{this.state.data2.lng_equityPricedecrease20per == null ? 'NA' : this.state.data2.lng_equityPricedecrease20per + ' %'}</td>
+                  <td>{this.state.data2.shrt_equityPricedecrease20per == null ? 'NA' : this.state.data2.shrt_equityPricedecrease20per + ' %'}</td>
+                </tr>
+                <tr>
+                  <th colSpan="5" align="left">Risk free interest rates</th>
+                </tr>
+                <tr>
+                  <th colSpan="5" align="left">(parallel shift in the yield curve):</th>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Risk free interest rates increase 25bp</td>
+                  <td>{this.state.data2.lng_Riskfreeintincrease25bp == null ? 'NA' : this.state.data2.lng_Riskfreeintincrease25bp + ' %'}</td>
+                  <td>{this.state.data2.shrt_Riskfreeintincrease25bp == null ? 'NA' : this.state.data2.shrt_Riskfreeintincrease25bp + ' %'}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Risk free interest rates decrease 25bp</td>
+                  <td>{this.state.data2.lng_Riskfreeintdecrease25bp == null ? 'NA' : this.state.data2.lng_Riskfreeintdecrease25bp + ' %'}</td>
+                  <td>{this.state.data2.shrt_Riskfreeintdecrease25bp == null ? 'NA' : this.state.data2.shrt_Riskfreeintdecrease25bp + ' %'}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Risk free interest rates increase 75bp</td>
+                  <td>{this.state.data2.lng_Riskfreeintincrease75bp == null ? 'NA' : this.state.data2.lng_Riskfreeintincrease75bp + ' %'}</td>
+                  <td>{this.state.data2.shrt_Riskfreeintincrease75bp == null ? 'NA' : this.state.data2.shrt_Riskfreeintincrease75bp + ' %'}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Risk free interest rates decrease 75bp</td>
+                  <td>{this.state.data2.lng_Riskfreeintdecrease75bp == null ? 'NA' : this.state.data2.lng_Riskfreeintdecrease75bp + ' %'}</td>
+                  <td>{this.state.data2.shrt_Riskfreeintdecrease75bp == null ? 'NA' : this.state.data2.shrt_Riskfreeintdecrease75bp + ' %'}</td>
+                </tr>
+                <tr>
+                  <th colSpan="5" align="left">Credit spreads:</th>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Credit Spreads increase 50bp</td>
+                  <td>{this.state.data2.lng_creditspreadsincrease50bp == null ? 'NA' : this.state.data2.lng_creditspreadsincrease50bp + ' %'}</td>
+                  <td>{this.state.data2.shrt_creditspreadsincrease50bp == null ? 'NA' : this.state.data2.shrt_creditspreadsincrease50bp + ' %'}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Credit Spreads decrease 50bp</td>
+                  <td>{this.state.data2.lng_creditspreadsdecrease50bp == null ? 'NA' : this.state.data2.lng_creditspreadsdecrease50bp + ' %'}</td>
+                  <td>{this.state.data2.shrt_creditspreadsdecrease50bp == null ? 'NA' : this.state.data2.shrt_creditspreadsdecrease50bp + ' %'}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Credit Spreads increase 250bp</td>
+                  <td>{this.state.data2.lng_creditspreadsincrease250bp == null ? 'NA' : this.state.data2.lng_creditspreadsincrease250bp + ' %'}</td>
+                  <td>{this.state.data2.shrt_creditspreadsincrease250bp == null ? 'NA' : this.state.data2.shrt_creditspreadsincrease250bp + ' %'}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Credit Spreads decrease 250bp</td>
+                  <td>{this.state.data2.lng_creditspreadsdecrease250bp == null ? 'NA' : this.state.data2.lng_creditspreadsdecrease250bp + ' %'}</td>
+                  <td>{this.state.data2.shrt_creditspreadsdecrease250bp == null ? 'NA' : this.state.data2.shrt_creditspreadsdecrease250bp + ' %'}</td>
+                </tr>
+                <tr>
+                  <th colSpan="5" align="left">Currency rates:</th>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Currency rates increase 5%</td>
+                  <td>{this.state.data2.lng_currencyratesincrease5per == null ? 'NA' : this.state.data2.lng_currencyratesincrease5per + ' %'}</td>
+                  <td>{this.state.data2.shrt_currencyratesincrease5per == null ? 'NA' : this.state.data2.shrt_currencyratesincrease5per + ' %'}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Currency rates decrease 5%</td>
+                  <td>{this.state.data2.lng_currencyratesdecrease5per == null ? 'NA' : this.state.data2.lng_currencyratesdecrease5per + ' %'}</td>
+                  <td>{this.state.data2.shrt_currencyratesdecrease5per == null ? 'NA' : this.state.data2.shrt_currencyratesdecrease5per + ' %'}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Currency rates increase 20%</td>
+                  <td>{this.state.data2.lng_currencyratesincrease20per == null ? 'NA' : this.state.data2.lng_currencyratesincrease20per + ' %'}</td>
+                  <td>{this.state.data2.shrt_currencyratesincrease20per == null ? 'NA' : this.state.data2.shrt_currencyratesincrease20per + ' %'}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Currency rates decrease 20%</td>
+                  <td>{this.state.data2.lng_currencyratesdecrease20per == null ? 'NA' : this.state.data2.lng_currencyratesdecrease20per + ' %'}</td>
+                  <td>{this.state.data2.shrt_currencyratesdecrease20per == null ? 'NA' : this.state.data2.shrt_currencyratesdecrease20per + ' %'}</td>
+                </tr>
+                <tr>
+                  <th colSpan="5" align="left">Commodity prices:</th>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Commodity prices increase 10%</td>
+                  <td>{this.state.data3.lng_commpricesincrease10per == null ? 'NA' : this.state.data3.lng_commpricesincrease10per + ' %'}</td>
+                  <td>{this.state.data3.shrt_commpricesincrease10per == null ? 'NA' : this.state.data3.shrt_commpricesincrease10per + ' %'}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Commodity prices decrease 10%</td>
+                  <td>{this.state.data3.lng_commpricesdecrease10per == null ? 'NA' : this.state.data3.lng_commpricesdecrease10per + ' %'}</td>
+                  <td>{this.state.data3.shrt_commpricesdecrease10per == null ? 'NA' : this.state.data3.shrt_commpricesdecrease10per + ' %'}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Commodity prices increase 40%</td>
+                  <td>{this.state.data3.lng_commpricesincrease40per == null ? 'NA' : this.state.data3.lng_commpricesincrease40per + ' %'}</td>
+                  <td>{this.state.data3.shrt_commpricesincrease40per == null ? 'NA' : this.state.data3.shrt_commpricesincrease40per + ' %'}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Commodity prices decrease 40%</td>
+                  <td>{this.state.data3.lng_commpricesdecrease40per == null ? 'NA' : this.state.data3.lng_commpricesdecrease40per + ' %'}</td>
+                  <td>{this.state.data3.shrt_commpricesdecrease40per == null ? 'NA' : this.state.data3.shrt_commpricesdecrease40per + ' %'}</td>
+                </tr>
+                <tr>
+                  <th colSpan="5" align="left">Option implied volatilities:</th>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Implied volatilities increase 4 percentage points</td>
+                  <td>{this.state.data3.lng_optImplincrease4per == null ? 'NA' : this.state.data3.lng_optImplincrease4per + ' %'}</td>
+                  <td>{this.state.data3.shrt_optImplincrease4per == null ? 'NA' : this.state.data3.shrt_optImplincrease4per + ' %'}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Implied volatilities decrease 4 percentage points</td>
+                  <td>{this.state.data3.lng_optImpldecrease4per == null ? 'NA' : this.state.data3.lng_optImpldecrease4per + ' %'}</td>
+                  <td>{this.state.data3.shrt_optImpldecrease4per == null ? 'NA' : this.state.data3.shrt_optImpldecrease4per + ' %'}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Implied volatilities increase 10 percentage points</td>
+                  <td>{this.state.data3.lng_optImplincrease10per == null ? 'NA' : this.state.data3.lng_optImplincrease10per + ' %'}</td>
+                  <td>{this.state.data3.shrt_optImplincrease10per == null ? 'NA' : this.state.data3.shrt_optImplincrease10per + ' %'}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Implied volatilities decrease 10 percentage points</td>
+                  <td>{this.state.data3.lng_optImpldecrease10per == null ? 'NA' : this.state.data3.lng_optImpldecrease10per + ' %'}</td>
+                  <td>{this.state.data3.shrt_optImpldecrease10per == null ? 'NA' : this.state.data3.shrt_optImpldecrease10per + ' %'}</td>
+                </tr>
+                <tr>
+                  <th colSpan="5" align="left">Default rates(ABS):</th>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Default rates increase 1 percentage point</td>
+                  <td>{this.state.data3.lng_defaultratesincrease1per == null ? 'NA' : this.state.data3.lng_defaultratesincrease1per + ' %'}</td>
+                  <td>{this.state.data3.shrt_defaultratesincrease1per == null ? 'NA' : this.state.data3.shrt_defaultratesincrease1per + ' %'}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Default rates decrease 1 percentage point</td>
+                  <td>{this.state.data3.lng_defaultratesdecrease1per == null ? 'NA' : this.state.data3.lng_defaultratesdecrease1per + ' %'}</td>
+                  <td>{this.state.data3.shrt_defaultratesdecrease1per == null ? 'NA' : this.state.data3.shrt_defaultratesdecrease1per + ' %'}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Default rates increase 5 percentage point</td>
+                  <td>{this.state.data3.lng_defaultratesincrease5per == null ? 'NA' : this.state.data3.lng_defaultratesincrease5per + ' %'}</td>
+                  <td>{this.state.data3.shrt_defaultratesincrease5per == null ? 'NA' : this.state.data3.shrt_defaultratesincrease5per + ' %'}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Default rates decrease 5 percentage point</td>
+                  <td>{this.state.data3.lng_defaultratesdecrease5per == null ? 'NA' : this.state.data3.lng_defaultratesdecrease5per + ' %'}</td>
+                  <td>{this.state.data3.shrt_defaultratesdecrease5per == null ? 'NA' : this.state.data3.shrt_defaultratesdecrease5per + ' %'}</td>
+                </tr>
+                <tr>
+                  <th colSpan="5" align="left">Default rates (corporate bonds and CDS):</th>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Default rates increase 1 percentage point</td>
+                  <td>{this.state.data3.lng_defaultratesincrease1perCBCDS == null ? 'NA' : this.state.data3.lng_defaultratesincrease1perCBCDS + ' %'}</td>
+                  <td>{this.state.data3.shrt_defaultratesincrease1perCBCDS == null ? 'NA' : this.state.data3.shrt_defaultratesincrease1perCBCDS + ' %'}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Default rates decrease 1 percentage point</td>
+                  <td>{this.state.data3.lng_defaultratesdecrease1perCBCDS == null ? 'NA' : this.state.data3.lng_defaultratesdecrease1perCBCDS + ' %'}</td>
+                  <td>{this.state.data3.shrt_defaultratesdecrease1perCBCDS == null ? 'NA' : this.state.data3.shrt_defaultratesdecrease1perCBCDS + ' %'}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Default rates increase 5 percentage point</td>
+                  <td>{this.state.data3.lng_defaultratesincrease5perCBCDS == null ? 'NA' : this.state.data3.lng_defaultratesincrease5perCBCDS + ' %'}</td>
+                  <td>{this.state.data3.shrt_defaultratesincrease5perCBCDS == null ? 'NA' : this.state.data3.shrt_defaultratesincrease5perCBCDS + ' %'}</td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textIndent: '50px' }}>Default rates decrease 5 percentage point</td>
+                  <td>{this.state.data3.lng_defaultratesdecrease5perCBCDS == null ? 'NA' : this.state.data3.lng_defaultratesdecrease5perCBCDS + ' %'}</td>
+                  <td>{this.state.data3.shrt_defaultratesdecrease5perCBCDS == null ? 'NA' : this.state.data3.shrt_defaultratesdecrease5perCBCDS + ' %'}</td>
+                </tr>
               </tbody>
             </table>
             <div>
               <ReactHTMLTableToExcel
                 className="btn btn-info"
-                table="emp"
-                filename="Form PF - Export"
-                sheet="Sheet"
-                buttonText="Export excel" />
+                table="q26"
+                filename="Form PF Q26 - Export"
+                sheet="Q26"
+                buttonText="Export Q26" />
+            </div>
+            <div>
+              <ReactHTMLTableToExcel
+                className="btn btn-info"
+                table="q42"
+                filename="Form PF Q42 - Export"
+                sheet="Q42"
+                buttonText="Export Q42" />
             </div>
           </div>
         </Fragment>
